@@ -17,3 +17,17 @@
 #az li a:hover {
 	color: black;
 }
+/* End A-Z list section */
+
+/* Player table section */
+	/* Add a rule to shade every other row in the table? */
+table td {
+	background-color: #ccc;
+}
+table td a {
+	color: red;
+}
+
+table td a:hover {
+	color: black;
+}

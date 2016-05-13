@@ -26,7 +26,7 @@
 <hr>
 
 <h3>Batting stats</h3>
-<table border='1px solid' border-collapse:collapse>
+<table border='1px solid'><!-- border-collapse="collapse">-->
 <tr class="statsHeader">
 	<td>Year</td><td>Team</td><td>League</td><td>G</td><td>AB</td><td>R</td><td>Avg</td><td>H</td>
 	<td>2B</td>	<td>3B</td><td>HR</td><td>RBI</td><td>SB</td><td>CS</td><td>BB</td><td>SO</td><td>IBB</td>
@@ -35,7 +35,7 @@
 </tr>
 <!-- If no stats in given year -->
 {% if seasonsBat == 0 %}
-<tr><td colspan="21">No batting stats accumulated</td></tr><!--Update this if # of stat columns change -->
+<tr><td colspan="21" align="center">No batting stats accumulated</td></tr><!--Update this if # of stat columns change -->
 {% endif %}
 
 {% for aYear in yearsBat %}
@@ -72,7 +72,7 @@
 </tr>
 <!-- If no stats in given year -->
 {% if seasonsPitch == 0 %}
-<tr><td colspan="28">No pitching stats accumulated</td></tr><!--Update this if # of stat columns change -->
+<tr><td colspan="28" align="center">No pitching stats accumulated</td></tr><!--Update this if # of stat columns change -->
 {% endif %}
 
 {% for aYear in yearsPitch %}

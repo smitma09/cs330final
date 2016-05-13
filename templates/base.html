@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel=stylesheet href="{{ url_for('static', filename='base.css')}}" type="text/css"/>
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"/>
+	{% block head %}
+	{% endblock %}
+</head>
+
+<body>
+	<nav>
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/index">Player index</a></li>
+		</ul>
+	</nav>
+
+
+	<div id="content">
+		{% block content %}
+		{% endblock %}
+	</div>
+
+	{% block footer %}
+
+	{% endblock %}
+</body>
+
+</html>

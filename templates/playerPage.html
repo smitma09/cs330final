@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+<!-- 
+***************************************************************************************************
+-Need to figure out why it keeps requesting /players/static/playerPage.css- Results in a 404
+***************************************************************************************************
+-->
+
+{% block head %}
+	<title>{{ nameFirst }} {{ nameLast }}</title>
+	<link rel=stylesheet href="{{ url_for('static', filename='playerPage.css')}}" type="text/css"/>
+{% endblock %}
+
+{% block content %}
+<h1>{{ nameFirst }} {{ nameLast }}</h1>
+<p><b>Born:</b> {{ birthMonth }}/{{ birthDay }}/{{ birthYear }}- {{ birthCity }}, {{ birthState }} 
+	({{ birthCountry }}) as {{ nameGiven }}.
+	{% if deathYear != "" %}
+		<b> Died:</b> {{ deathMonth }}/{{ deathDay }}/{{ deathYear }}- {{ deathCity }}, {{ deathState }} 
+			({{ deathCountry }})
+	{% endif %}</p>
+<p><b>Height:</b> {{ heightFt }}' {{ heightIn }}". <b>Weight:</b> {{ weight }}</p>
+<p><b>Throws:</b> {{ throws }}. <b>Bats:</b> {{ bats }}</p>
+<p><b>MLB debut:</b> {{ debut[5:7] }}/{{ debut[8:] }}/{{ debut[0:4] }}.
+	<b>Last MLB appearance:</b> {{ finalGame[5:7] }}/{{ finalGame[8:] }}/{{ finalGame[0:4] }}</p>
+
+<hr>
+
+<h3>Batting stats</h3>
+<table border='1px solid' border-collapse:collapse>
+<tr class="statsHeader">
+	<td>Year</td><td>Team</td><td>League</td><td>G</td><td>AB</td><td>R</td><td>Avg</td><td>H</td>
+	<td>2B</td>	<td>3B</td><td>HR</td><td>RBI</td><td>SB</td><td>CS</td><td>BB</td><td>SO</td><td>IBB</td>
+	<td>HBP</td><td>SH</td><td>SF<!--<span>Sacrifice flies</span>--></td>
+	<td>GIDP<!--<span>Ground into double play</span>--></td>
+</tr>
+<!-- If no stats in given year -->
+{% if seasonsBat == 0 %}
+<tr><td colspan="21">No batting stats accumulated</td></tr><!--Update this if # of stat columns change -->
+{% endif %}
+
+{% for aYear in yearsBat %}
+	<!-- Determines if row should be shaded or not -->
+	{% if loop.index0 % 2 != 0 %}
+    	<tr class="shaded">
+	{% endif %}
+	{% if loop.index0 % 2 == 0 %}
+		<tr>
+	{% endif %}
+	<!-- Adds stats to table -->
+    <td>{{ yearsBat[loop.index0] }}</td><td>{{ teamIDBat[loop.index0] }}</td>
+    <td>{{ lgIDBat[loop.index0] }}</td><td>{{ GBat[loop.index0] }}</td><td>{{ ABBat[loop.index0] }}</td>
+    <td>{{ RBat[loop.index0] }}</td><td>{{ AvgBat[loop.index0] }}<td>{{ HBat[loop.index0] }}</td>
+    <td>{{ twoBBat[loop.index0] }}</td><td>{{ threeBBat[loop.index0] }}</td>
+    <td>{{ HRBat[loop.index0] }}</td><td>{{ RBIBat[loop.index0] }}</td><td>{{ SBBat[loop.index0] }}</td>
+    <td>{{ CSBat[loop.index0] }}</td><td>{{ BBBat[loop.index0] }}</td><td>{{ SOBat[loop.index0] }}</td>
+    <td>{{ IBBBat[loop.index0] }}</td><td>{{ HBPBat[loop.index0] }}</td><td>{{ SHBat[loop.index0] }}</td>
+    <td>{{ SFBat[loop.index0] }}</td><td>{{ GIDPBat[loop.index0] }}</td>
+    </tr>
+{% endfor %}
+</table>
+
+<br>
+<hr>
+
+<h3>Pitching stats</h3>
+<table border='1px solid' border-collapse:collapse>
+<tr class="statsHeader">
+	<td>Year</td><td>Team</td><td>League</td><td>W</td><td>L</td><td>G</td><td>GS</td><td>CG</td>
+	<td>SHO</td><td>SV</td><td>IP</td><td>H</td><td>ER</td><td>HR</td><td>BB</td><td>SO</td><td>BAOpp</td>
+	<td>ERA</td><td>IBB</td><td>WP</td><td>HBP</td><td>BK</td><td>BFP</td><td>GF</td><td>R</td><td>SH</td>
+	<td>SF</td><td>GIDP</td>
+</tr>
+<!-- If no stats in given year -->
+{% if seasonsPitch == 0 %}
+<tr><td colspan="28">No pitching stats accumulated</td></tr><!--Update this if # of stat columns change -->
+{% endif %}
+
+{% for aYear in yearsPitch %}
+	<!-- Determines if row should be shaded or not -->
+	{% if loop.index0 % 2 != 0 %}
+    	<tr class="shaded">
+	{% endif %}
+	{% if loop.index0 % 2 == 0 %}
+		<tr>
+	{% endif %}
+	<!-- Adds stats to table -->
+	<td>{{ yearsPitch[loop.index0] }}</td><td>{{ teamIDPitch[loop.index0] }}</td>
+	<td>{{ lgIDPitch[loop.index0] }}</td><td>{{ WPitch[loop.index0] }}</td>
+	<td>{{ LPitch[loop.index0] }}</td><td>{{ GPitch[loop.index0] }}</td>
+	<td>{{ GSPitch[loop.index0] }}</td><td>{{ CGPitch[loop.index0] }}</td>
+	<td>{{ SHOPitch[loop.index0] }}</td><td>{{ SVPitch[loop.index0] }}</td>
+	<td>{{ IPPitch[loop.index0] }}</td><td>{{ HPitch[loop.index0] }}</td>
+	<td>{{ ERPitch[loop.index0] }}</td><td>{{ HRPitch[loop.index0] }}</td>
+	<td>{{ BBPitch[loop.index0] }}</td><td>{{ SOPitch[loop.index0] }}</td>
+	<td>{{ BAOppPitch[loop.index0] }}</td><td>{{ ERAPitch[loop.index0][0:4] }}</td>
+	<td>{{ IBBPitch[loop.index0] }}</td><td>{{ WPPitch[loop.index0] }}</td>
+	<td>{{ HBPPitch[loop.index0] }}</td><td>{{ BKPitch[loop.index0] }}</td>
+	<td>{{ BFPPitch[loop.index0] }}</td><td>{{ GFPitch[loop.index0] }}</td>
+	<td>{{ RPitch[loop.index0] }}</td><td>{{ SHPitch[loop.index0] }}</td>
+	<td>{{ SFPitch[loop.index0] }}</td><td>{{ GIDPPitch[loop.index0] }}</td>
+	</tr>
+{% endfor %}
+
+</table>
+{% endblock %}

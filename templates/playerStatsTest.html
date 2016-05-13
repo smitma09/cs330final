@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p>Number: {{ num }}</p>
+
+<p id="test1"></p>
+<p id="test2"></p>
+<!--Tring to make stats work -->
+<button onClick="aFunction()">Trying to make qwerty appear</button>
+
+<!--Refresher for JS functions- This works fine -->
+<button onClick="myFunc()">Testing buttons</button>
+
+<script>
+function myFunc() {
+	document.getElementById("test2").innerHTML = "Hello?...";
+}
+</script>
+
+<script>
+function aFunction() {
+	var i;
+	var text="";
+	for (i=0; i<5; i++) {
+		text += "Hi...";
+	}
+	document.getElementById("test1").innerHTML = text;
+}
+</script>
+
+<p>Years: {{ year1 }}, {{ year2 }}</p>
+
+<!-- Function that won't work:
+document.getElementById("test1").innerHTML = "qwerty1";
+	var i;
+	var text = "";
+	for (i=0; i<5; i++ {
+		text += "Hi...";
+	}
+	document.getElementById("test1").innerHTML = "qwerty2";
+-->
+
+
+<!-- Old stuff...
+<p>PlayerID: {{ playerID }}</p>
+<p>Year: {{ yearID }}</p>
+<p>At bats: {{ AB }}<p>
+<p>Hits: {{ H }}</p>
+-->
+{% endblock %}

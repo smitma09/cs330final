@@ -1,0 +1,44 @@
+/* Stats tables section */
+table td {
+	padding-right: 7px;
+}
+
+.statsHeader {
+	background-color: #aaa;
+}
+
+.shaded {
+	background-color: #ccc;
+}
+
+table tr.statsHeader td {
+	color: red;
+}
+/* End stats tables section */
+
+/* Clarify catergories on hover */
+/* Need to figure out how to not allow extra space to show in the table cell on hover */
+table tr.statsHeader td { /* Styles the info without the span */
+
+}
+table tr.statsHeader td span {
+	display: none;
+	border: 2px solid black;
+	position: relative;
+	text-align: center;
+	
+	padding: 2px;
+	background-color: #ccc;
+}
+
+table tr.statsHeader td span:after {
+	content: "";
+	position: absolute;
+}
+
+table tr.statsHeader td:hover span{
+	display: block;
+	content: "";
+}
+/* End on hover section */
+

@@ -1,0 +1,19 @@
+/* A-Z list section */
+#az {
+	list-style-type: none;
+}
+
+#az li {
+	display: inline;
+	font-weight: bold;
+	color: black;
+}
+
+#az li a {
+	color: red;
+	font-weight: normal;
+}
+
+#az li a:hover {
+	color: black;
+}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p>Player ID: {{ playerID }}</p>
+<p>Years: {{ years }}</p>
+<p>Single year by index: {{ years[0] }}, {{ years[1] }}, {{ years[2] }}</p>
+<p>Single year by dot: {{ years.0 }}, {{ years.1 }}, {{ years.2 }}</p>
+<p>Hits: {{ hits }}
+
+<p><u>Individual years</u></p>
+
+<table border='1px solid' border-collapse:collapse>
+<tr>
+	<td>Year</td><td>Stint</td><td>Team</td><td>League</td><td>G</td><td>AB</td><td>R</td><td>H</td><td>2B</td>
+	<td>3B</td><td>HR</td><td>RBI</td><td>SB</td><td>CS</td><td>BB</td><td>SO</td><td>IBB</td><td>HBP</td>
+	<td>SH</td><td>SF</td><td>GIDP</td>
+</tr>
+
+{% for aYear in years %}
+	<!-- Edit this so a stat line gets added for each loop- With <tr>s and <td>s -->
+    <tr>
+    	<td>{{ years[loop.index0] }}</td><td>{{ stint[loop.index0] }}</td><td>{{ teamID[loop.index0] }}</td>
+    	<td>{{ lgID[loop.index0] }}</td><td>{{ G[loop.index0] }}</td><td>{{ AB[loop.index0] }}</td>
+    	<td>{{ R[loop.index0] }}</td><td>{{ H[loop.index0] }}</td><td>{{ twoB[loop.index0] }}</td>
+    	<td>{{ threeB[loop.index0] }}</td><td>{{ HR[loop.index0] }}</td><td>{{ RBI[loop.index0] }}</td>
+    	<td>{{ SB[loop.index0] }}</td><td>{{ CS[loop.index0] }}</td><td>{{ BB[loop.index0] }}</td>
+    	<td>{{ SO[loop.index0] }}</td><td>{{ IBB[loop.index0] }}</td><td>{{ HBP[loop.index0] }}</td>
+    	<td>{{ SH[loop.index0] }}</td><td>{{ SF[loop.index0] }}</td><td>{{ GIDP[loop.index0] }}</td>
+    </tr>
+{% endfor %}
+
+</table>
+
+{% endblock %}

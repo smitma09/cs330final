@@ -2,9 +2,14 @@
 
 {% block head %}
 	<title>Home</title>
+	<link rel=stylesheet href="{{ url_for('static', filename='home.css')}}" type="text/css"/>
 {% endblock %}
 
 {% block content %}
 <h1>Header.....</h1>
-<p>Content...
+<img src="{{ url_for('static', filename='fieldView.jpg')}}">
+
+<h1>Header.....</h1>
+<p>Content...</p>
+
 {% endblock %}

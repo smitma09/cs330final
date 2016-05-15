@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Player Index</title>
+<link rel=stylesheet href="{{ url_for('static', filename='index.css')}}" type="text/css"/>
+{% endblock %}
+
+{% block content %}
+<!-- Add in A-Z links here -->
+<h1>Player Index- Full</h1>
+<p>Click on one of the following letters to view only players whose last names begin with that letter.</p>
+<ul id="az">
+	<li><a href="/player-index/A">A</a> | </li><li><a href="/player-index/B">B</a> | </li>
+	<li><a href="/player-index/C">C</a> | </li><li><a href="/player-index/D">D</a> | </li>
+	<li><a href="/player-index/E">E</a> | </li><li><a href="/player-index/F">F</a> | </li>
+	<li><a href="/player-index/G">G</a> | </li><li><a href="/player-index/H">H</a> | </li>
+	<li><a href="/player-index/I">I</a> | </li><li><a href="/player-index/J">J</a> | </li>
+	<li><a href="/player-index/K">K</a> | </li><li><a href="/player-index/L">L</a> | </li>
+	<li><a href="/player-index/M">M</a> | </li><li><a href="/player-index/N">N</a> | </li>
+	<li><a href="/player-index/O">O</a> | </li><li><a href="/player-index/P">P</a> | </li>
+	<li><a href="/player-index/Q">Q</a> | </li><li><a href="/player-index/R">R</a> | </li>
+	<li><a href="/player-index/S">S</a> | </li><li><a href="/player-index/T">T</a> | </li>
+	<li><a href="/player-index/U">U</a> | </li><li><a href="/player-index/V">V</a> | </li>
+	<li><a href="/player-index/W">W</a> | </li><li><a href="/player-index/X">X</a> | </li>
+	<li><a href="/player-index/Y">Y</a> | </li><li><a href="/player-index/Z">Z</a></li>
+</ul>
+
+<p>The following table contains links to the player pages of every player in the database. Click on one to
+	go to their player page!</p>
+
+<table border='1px solid' border-collapse:collapse>
+
+{% for aPlayer in reslist %}
+	{% if loop.index0 % 10 == 0 %}
+		<tr>
+	{% endif %}
+	<td><a href={{ links[loop.index0] }}>{{ lastNames[loop.index0] }}, {{ firstNames[loop.index0] }}
+		</a></td>
+	{% if (loop.index0 + 1) % 10 == 0 %}
+		</tr>
+	{% endif %}
+
+
+{% endfor %}
+</table>	
+
+
+
+{% endblock %}

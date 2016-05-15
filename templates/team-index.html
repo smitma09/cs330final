@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Team Index</title>
+<link rel=stylesheet href="{{ url_for('static', filename='index.css')}}" type="text/css"/>
+{% endblock %}
+
+{% block content %}
+<h1>Team Index</h1>
+<p>Key: Team (league, franchise)</p>
+
+<table border='1px solid'>
+{% for i in teamIDs %}
+	{% if loop.index0 % 5 == 0 %}
+		<tr>
+	{% endif %}
+
+	<td><a href={{ links[loop.index0] }}>{{ teamNames[loop.index0] }} ({{ lgIDs[loop.index0] }}, {{ franchise[loop.index0] }})</a></td>
+
+	{% if (loop.index0 + 1) % 5 == 0 %}
+		</tr>
+	{% endif %}
+
+{% endfor %}
+</table>
+
+{% endblock %}

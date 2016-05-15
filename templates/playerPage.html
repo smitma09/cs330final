@@ -47,7 +47,7 @@
 		<tr>
 	{% endif %}
 	<!-- Adds stats to table -->
-    <td>{{ yearsBat[loop.index0] }}</td><td>{{ teamIDBat[loop.index0] }}</td>
+    <td><b>{{ yearsBat[loop.index0] }}</b></td><td>{{ teamIDBat[loop.index0] }}</td>
     <td>{{ lgIDBat[loop.index0] }}</td><td>{{ GBat[loop.index0] }}</td><td>{{ ABBat[loop.index0] }}</td>
     <td>{{ RBat[loop.index0] }}</td><td>{{ AvgBat[loop.index0] }}<td>{{ HBat[loop.index0] }}</td>
     <td>{{ twoBBat[loop.index0] }}</td><td>{{ threeBBat[loop.index0] }}</td>
@@ -84,7 +84,7 @@
 		<tr>
 	{% endif %}
 	<!-- Adds stats to table -->
-	<td>{{ yearsPitch[loop.index0] }}</td><td>{{ teamIDPitch[loop.index0] }}</td>
+	<td><b>{{ yearsPitch[loop.index0] }}</b></td><td>{{ teamIDPitch[loop.index0] }}</td>
 	<td>{{ lgIDPitch[loop.index0] }}</td><td>{{ WPitch[loop.index0] }}</td>
 	<td>{{ LPitch[loop.index0] }}</td><td>{{ GPitch[loop.index0] }}</td>
 	<td>{{ GSPitch[loop.index0] }}</td><td>{{ CGPitch[loop.index0] }}</td>
@@ -100,6 +100,32 @@
 	<td>{{ SFPitch[loop.index0] }}</td><td>{{ GIDPPitch[loop.index0] }}</td>
 	</tr>
 {% endfor %}
+</table>
 
+<h3>Managerial stats</h3>
+<table border='1px solid' border-collapse:collapse>
+<tr class="statsHeader">
+	<td>Year</td><td>Team</td><td>League</td><td>G</td><td>W</td><td>L</td><td>rank</td>
+</tr>
+<!-- If no stats in given year -->
+{% if seasonsManager == 0 %}
+<tr><td colspan="7" align="center">No managerial stats accumulated</td></tr><!--Update this if # of stat columns change -->
+{% endif %}
+
+{% for aYear in yearIDManager %}
+	<!-- Determines if row should be shaded or not -->
+	{% if loop.index0 % 2 != 0 %}
+    	<tr class="shaded">
+	{% endif %}
+	{% if loop.index0 % 2 == 0 %}
+		<tr>
+	{% endif %}
+	<!-- Adds stats to table -->
+	<td><b>{{ yearIDManager[loop.index0] }}</b></td><td>{{ teamIDManager[loop.index0] }}</td>
+	<td>{{ lgIDManager[loop.index0] }}</td><td>{{ GManager[loop.index0] }}</td>
+	<td>{{ WManager[loop.index0] }}</td><td>{{ LManager[loop.index0] }}</td>
+	<td>{{ rankManager[loop.index0] }}</td>
+	</tr>
+{% endfor %}
 </table>
 {% endblock %}

@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+
+{% block head %}
+	<title>{{ name[0] }} ({{ lgID[0] }}, {{ franchise[0] }})</title>
+	<link rel=stylesheet href="{{ url_for('static', filename='playerPage.css')}}" type="text/css"/>
+{% endblock %}
+
+{% block content %}
+<h1>{{ name[0] }}</h1>
+<p>League: {{ lgID[0] }}. Franchise: {{ franchise[0] }}</p>
+<p>Time frame: {{ years[0] }}-{{ years[-1] }}</p>
+
+<!-- - - - - - - - - - General stats - - - - - - - - - - -->
+<h3>General stats</h3>
+<table border='1px solid' border-collapse:collapse>
+<tr class="statsHeader">
+	<td>Year</td><td>League</td><td>Team</td><td>Franchise</td><td>Division</td><td>Division Rank</td>
+		<td>G</td><td>W</td><td>L</td><td>Division champion?</td><td>Wild Card winner?</td><td>League champion?</td>
+		<td>World Series champion?</td>
+</tr>
+{% for i in years %}
+	{% if loop.index0 % 2 != 0 %}
+    	<tr class="shaded">
+	{% endif %}
+	{% if loop.index0 % 2 == 0 %}
+		<tr>
+	{% endif %}
+		<td><b>{{ years[loop.index0] }}<b/></td><td>{{ lgID[loop.index0] }}</td><td>{{ teamID[loop.index0] }}</td>
+		<td>{{ franchise[loop.index0] }}</td>
+		<!-- Division -->
+		{% if divID[loop.index0] == "" %}<td>N/A</td>{% endif %}
+		{% if divID[loop.index0] != "" %}<td>{{ divID[loop.index0] }}</td>{% endif %}
+		<!-- Rank -->
+		{% if rank[loop.index0] == 1 %}<td class="highlight">1</td>{% endif %}
+		{% if rank[loop.index0] != 1 %}<td>{{ rank[loop.index0] }}</td>{% endif %}
+		<td>{{ G[loop.index0] }}</td><td>{{ W[loop.index0] }}</td><td>{{ L[loop.index0] }}</td>
+		<!-- Division win? -->
+		{% if DivWin[loop.index0] != "" %}
+			{% if DivWin[loop.index0] == "Y" %}<td class="highlight">Won division</td>{% endif %}
+			{% if DivWin[loop.index0] == "N" %}<td></td>{% endif %}
+		{% endif %}
+		{% if DivWin[loop.index0] == "" %}<td>N/A</td>{% endif %}
+		<!-- Wild Card winner? -->
+		{% if WCWin[loop.index0] == "Y" %}<td class="highlight">Won Wild Card</td>{% endif %}
+		{% if WCWin[loop.index0] == "N" %}<td></td>{% endif %}
+		{% if WCWin[loop.index0] == "" %}<td></td>{% endif %}
+		<!-- League champion? -->
+		{% if LgWin[loop.index0] == "Y" %}<td class="highlight">League champion</td>{% endif %}
+		{% if LgWin[loop.index0] != "Y" %}<td></td>{% endif %}
+		<!-- World Series champion? -->
+		{% if WSWin[loop.index0] == "Y" %}<td class="highlight">WS champion</td>{% endif %}
+		{% if WSWin[loop.index0] != "Y" %}<td></td>{% endif %}
+	</tr>
+{% endfor %}
+</table><br><hr>
+
+<!-- - - - - - - - - - Batting stats - - - - - - - - - - -->
+<h3>Batting stats</h3>
+<table border='1px solid' border-collapse:collapse>
+<tr class="statsHeader">
+	<td>Year</td><td>G</td><td>AB</td><td>H</td><td>Avg</td><td>R</td><td>2B</td><td>3B</td><td>HR</td>
+		<td>SB</td><td>CS</td><td>BB</td><td>SO</td><td>HBP</td><td>SF</td>
+</tr>
+{% for i in years %}
+	{% if loop.index0 % 2 != 0 %}
+    	<tr class="shaded">
+	{% endif %}
+	{% if loop.index0 % 2 == 0 %}
+		<tr>
+	{% endif %}
+		<td><b>{{ years[loop.index0] }}<b/></td><td>{{ G[loop.index0] }}</td><td>{{ AB[loop.index0] }}</td>
+		<td>{{ H[loop.index0] }}</td><td>{{ Avg[loop.index0] }}</td><td>{{ R[loop.index0] }}</td>
+		<td>{{ twoB[loop.index0] }}</td><td>{{ threeB[loop.index0] }}</td><td>{{ HR[loop.index0] }}</td>
+		<td>{{ SB[loop.index0] }}</td><td>{{ CS[loop.index0] }}</td><td>{{ BB[loop.index0] }}</td>
+		<td>{{ SO[loop.index0] }}</td><td>{{ HBP[loop.index0] }}</td><td>{{ SF[loop.index0] }}</td>
+	</tr>
+{% endfor %}
+</table><br><hr>
+
+<!-- - - - - - - - - - Pitching stats - - - - - - - - - - -->
+<h3>Pitching stats</h3>
+<table border='1px solid' border-collapse:collapse>
+<tr class="statsHeader">
+	<td>Year</td><td>G</td><td>R</td><td>ERA</td><td>W</td><td>L</td><td>CGO</td><td>SHO</td><td>SV</td>
+		<td>IP</td><td>H</td><td>HR</td><td>BB</td><td>SO</td>
+</tr>
+{% for i in years %}
+	{% if loop.index0 % 2 != 0 %}
+    	<tr class="shaded">
+	{% endif %}
+	{% if loop.index0 % 2 == 0 %}
+		<tr>
+	{% endif %}
+		<td><b>{{ years[loop.index0] }}</b></td><td>{{ G[loop.index0] }}</td><td>{{ RA[loop.index0] }}</td>
+		<td>{{ ERA[loop.index0] }}</td><td>{{ W[loop.index0] }}</td><td>{{ L[loop.index0] }}</td>
+		<td>{{ CG[loop.index0] }}</td><td>{{ SHO[loop.index0] }}</td><td>{{ SV[loop.index0] }}</td>
+		<td>{{ IP[loop.index0] }}</td><td>{{ HA[loop.index0] }}</td><td>{{ HRA[loop.index0] }}</td>
+		<td>{{ BBA[loop.index0] }}</td><td>{{ SOA[loop.index0] }}</td>
+	</tr>
+{% endfor %}
+</table><br><hr>
+
+<!-- - - - - - - - - - Fielding stats - - - - - - - - - - -->
+<h3>Fielding stats</h3>
+<table border='1px solid' border-collapse:collapse>
+<tr class="statsHeader">
+	<td>Year</td><td>G</td><td>Errors</td><td>Double Plays</td><td>Fielding %</td>
+</tr>
+{% for i in years %}
+	{% if loop.index0 % 2 != 0 %}
+    	<tr class="shaded">
+	{% endif %}
+	{% if loop.index0 % 2 == 0 %}
+		<tr>
+	{% endif %}
+		<td><b>{{ years[loop.index0] }}</b></td><td>{{ G[loop.index0] }}</td><td>{{ E[loop.index0] }}</td>
+		<td>{{ DP[loop.index0] }}</td><td>{{ FP[loop.index0] }}</td>
+	</tr>
+{% endfor %}
+</table><br><hr>
+
+<!-- - - - - - - - - - Ballpark stats - - - - - - - - - - -->
+<h3>Ballpark stats</h3>
+<table border='1px solid'>
+<tr class="statsHeader">
+	<td>Year</td><td>Home Games</td><td>Park Name</td><td>Total Attendance</td>
+</tr>
+{% for i in years %}
+	{% if loop.index0 % 2 != 0 %}
+    	<tr class="shaded">
+	{% endif %}
+	{% if loop.index0 % 2 == 0 %}
+		<tr>
+	{% endif %}
+		<td><b>{{ years[loop.index0] }}</b></td><td>{{ GHome[loop.index0] }}</td><td>{{ park[loop.index0] }}</td>
+		<td>{{ attendance[loop.index0] }}</td>
+	</tr>
+{% endfor %}
+</table>
+
+{% endblock %}

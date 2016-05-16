@@ -6,15 +6,27 @@
 {% endblock %}
 
 {% block content %}
-<h1>{{ name[0] }}</h1>
+<h1>{{ name[0].strip() }}</h1>
+{% if name[0] != name[-1] %}
+	<p>Also known as:</p>
+{% endif %}
+<ul>
+{% for aName in name %}
+	
+	{% if name[loop.index0] != name[loop.index0 -1] %}
+		<li>{{ name[loop.index0] }}</li>
+	{% endif %}
+{% endfor %}
+</ul>
+
 <p>League: {{ lgID[0] }}. Franchise: {{ franchise[0] }}</p>
 <p>Time frame: {{ years[0] }}-{{ years[-1] }}</p>
 
 <!-- - - - - - - - - - General stats - - - - - - - - - - -->
 <h3>General stats</h3>
-<table border='1px solid' border-collapse:collapse>
+<table border='1px solid'>
 <tr class="statsHeader">
-	<td>Year</td><td>League</td><td>Team</td><td>Franchise</td><td>Division</td><td>Division Rank</td>
+	<td>Year</td><td>League</td><td>Team Name</td><td>Division</td><td>Division Rank</td>
 		<td>G</td><td>W</td><td>L</td><td>Division champion?</td><td>Wild Card winner?</td><td>League champion?</td>
 		<td>World Series champion?</td>
 </tr>
@@ -25,8 +37,7 @@
 	{% if loop.index0 % 2 == 0 %}
 		<tr>
 	{% endif %}
-		<td><b>{{ years[loop.index0] }}<b/></td><td>{{ lgID[loop.index0] }}</td><td>{{ teamID[loop.index0] }}</td>
-		<td>{{ franchise[loop.index0] }}</td>
+		<td><b>{{ years[loop.index0] }}<b/></td><td>{{ lgID[loop.index0] }}</td><td>{{ name[loop.index0] }}</td>
 		<!-- Division -->
 		{% if divID[loop.index0] == "" %}<td>N/A</td>{% endif %}
 		{% if divID[loop.index0] != "" %}<td>{{ divID[loop.index0] }}</td>{% endif %}

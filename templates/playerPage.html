@@ -7,7 +7,7 @@
 
 {% block content %}
 <h1>{{ nameFirst }} {{ nameLast }}</h1>
-<p><b>Born:</b> {{ birthMonth }}/{{ birthDay }}/{{ birthYear }}- {{ birthCity }}, {{ birthState }} 
+<p><b>Born:</b> {{ birthMonth }}/{{ birthDay }}/{{ birthYear }} in {{ birthCity }}, {{ birthState }} 
 	({{ birthCountry }}) as {{ nameGiven }}.
 	{% if deathYear != "" %}
 		<b> Died:</b> {{ deathMonth }}/{{ deathDay }}/{{ deathYear }}- {{ deathCity }}, {{ deathState }} 
@@ -52,7 +52,8 @@
 		<tr>
 	{% endif %}
 	<!-- Adds stats to table -->
-    <td><b>{{ yearsBat[loop.index0] }}</b></td><td>{{ teamIDBat[loop.index0] }}</td>
+    <td><b>{{ yearsBat[loop.index0] }}</b></td>
+    <td><a href="/teams/{{ teamIDBat[loop.index0] }}">{{ teamIDBat[loop.index0] }}</a></td>
     <td>{{ lgIDBat[loop.index0] }}</td><td>{{ GBat[loop.index0] }}</td><td>{{ ABBat[loop.index0] }}</td>
     <td>{{ RBat[loop.index0] }}</td><td>{{ AvgBat[loop.index0] }}<td>{{ HBat[loop.index0] }}</td>
     <td>{{ twoBBat[loop.index0] }}</td><td>{{ threeBBat[loop.index0] }}</td>
@@ -86,7 +87,8 @@
 		<tr>
 	{% endif %}
 	<!-- Adds stats to table -->
-	<td><b>{{ yearsPitch[loop.index0] }}</b></td><td>{{ teamIDPitch[loop.index0] }}</td>
+	<td><b>{{ yearsPitch[loop.index0] }}</b></td>
+	<td><a href="/teams/{{ teamIDPitch[loop.index0] }}">{{ teamIDPitch[loop.index0] }}</a></td>
 	<td>{{ lgIDPitch[loop.index0] }}</td><td>{{ WPitch[loop.index0] }}</td>
 	<td>{{ LPitch[loop.index0] }}</td><td>{{ GPitch[loop.index0] }}</td>
 	<td>{{ GSPitch[loop.index0] }}</td><td>{{ CGPitch[loop.index0] }}</td>
@@ -123,7 +125,8 @@
 		<tr>
 	{% endif %}
 	<!-- Adds stats to table -->
-	<td><b>{{ yearIDManager[loop.index0] }}</b></td><td>{{ teamIDManager[loop.index0] }}</td>
+	<td><b>{{ yearIDManager[loop.index0] }}</b></td>
+	<td><a href="/teams/{{ teamIDManager[loop.index0] }}">{{ teamIDManager[loop.index0] }}</a></td>
 	<td>{{ lgIDManager[loop.index0] }}</td><td>{{ GManager[loop.index0] }}</td>
 	<td>{{ WManager[loop.index0] }}</td><td>{{ LManager[loop.index0] }}</td>
 	<td>{{ rankManager[loop.index0] }}</td>

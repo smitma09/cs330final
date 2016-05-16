@@ -11,6 +11,20 @@ nav ul li {
 	display: inline;
 	padding-right: 5%;
 }
+nav ul li#title {
+	float: right;
+	color: black;
+	padding: 0px;
+	padding-right: 2.5%;
+	font-size: 125%;
+	font-weight: bold;
+}
+nav ul li#title img {
+	height: 12%;
+	width: 12%;
+	display: inline;
+	padding-right: 5px;
+}
 nav ul li a {
 	color: red;
 }

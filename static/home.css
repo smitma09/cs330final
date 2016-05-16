@@ -1,5 +1,50 @@
 /* Main image */
 img {
 	width: 100%;
-	padding: 5px;
+	padding-top: 5px	
+}
+
+/* Header */
+h1#mainTitle {
+	text-align: center;
+}
+
+div.col1, div.col2, div.col3, div.col4 {
+	width: 22%;
+	float: left;
+	display: inline;
+	padding-left: 1%;
+	padding-right: 1%;
+	padding-bottom: 20px;
+	margin-bottom: 1.5%;
+	margin-left: 5px;
+	background-color: #ccc;
+	border: 1px solid black;
+}
+
+div.col1, div.col2, div.col3, div.col4 {
+	
+}
+
+table tr td {
+	background-color: #ddd;
+	padding-left: 5px;
+	padding-right: 10px;
+}
+
+table tr td.header {
+	color: black;
+	font-weight: bold;
+	padding-left: 5px;
+	padding-right: 10px;
+}
+
+table tr td a {
+	color: red;
+	padding-left: 5px;
+	padding-right: 10px;
+}
+
+table tr td a:hover{
+	color: black;
 }

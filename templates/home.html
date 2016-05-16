@@ -3,13 +3,59 @@
 {% block head %}
 	<title>Home</title>
 	<link rel=stylesheet href="{{ url_for('static', filename='home.css')}}" type="text/css"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 {% endblock %}
 
 {% block content %}
-<h1>Header.....</h1>
+
+
 <img src="{{ url_for('static', filename='fieldView.jpg')}}">
 
-<h1>Header.....</h1>
-<p>Content...</p>
+<!-- Consider making this first paragraph span the whole page, and then having multiple tables with records or some 	other interesting short (5-row?) tables that take up, say, 1/4th of the page each -->
+<p>Ever wonder how many hits Ty Cobb had in 1922? (211). Or how many strikeouts Jack Morris had in 1991? (163). What about how many wins Bob Melvin coached his team to in 2012? (94). This site is the place for you. Holding pitching, hitting, and managerial stats of all players dating back to the late 1800s and accurate through 2015, you can find just about anything you may be wondering about here. You can also find information about nearly any team, including yearly results, hitting stats, pitching stats, and fielding stats. Take a look and explore the wide world of baseball! Below are a few idea to get you started.</p>
+<div class="col1">
+	<p>Check out a few of today's top young players:</p>
+	<table class="col1" border='1px solid'>
+		<tr><td class="header">Player name</td></tr>
+		<tr><td><a href="/players/correca01">Carlos Correa</a></td></tr>
+		<tr><td><a href="/players/harpebr03">Bryce Harper</a></td></tr>
+		<tr><td><a href="/players/machama01">Manny Machado</a></td></tr>
+		<tr><td><a href="/players/strasst01">Stephen Strasburg</a></td></tr>
+		<tr><td><a href="/players/troutmi01">Mike Trout</a></td></tr>
+	</table>
+</div>
+<div class="col2">
+	<p>Interested in the World Series winning teams from the past few years?</p>
+	<table class="col1" border='1px solid'>
+		<tr><td class="header">Year</td><td class="header">Team name</td></tr>
+		<tr><td><b>2015</b></td><td><a href="/teams/KCA">Kansas City Royals</a></td></tr>
+		<tr><td><b>2014</b></td><td><a href="/teams/SFN">San Francisco Giants</a></td></tr>
+		<tr><td><b>2013</b></td><td><a href="/teams/BOS">Boston Red Sox</a></td></tr>
+		<tr><td><b>2012</b></td><td><a href="/teams/SFN">San Francisco Giants</a></td></tr>
+		<tr><td><b>2011</b></td><td><a href="/teams/SLN">St. Louis Cardinals</a></td></tr>
 
+	</table>
+</div>
+<div class="col3">
+	<p>Here are the top Home Run leaders of all time:</p>
+	<table class="col1" border='1px solid'>
+		<tr><td class="header">Rank</td><td class="header">Player name</td><td>HRs</td></tr>
+		<tr><td><b>1</b></td><td><a href="/players/bondsba01">Barry Bonds*</a></td><td>762</td></tr>
+		<tr><td><b>2</b></td><td><a href="/players/aaronha01">Hank Aaron</a></td><td>755</td></tr>
+		<tr><td><b>3</b></td><td><a href="/players/ruthba01">Babe Ruth</a></td><td>715</td></tr>
+		<tr><td><b>4</b></td><td><a href="/players/rodrial01">Alex Rodriguez</a></td><td>692</td></tr>
+		<tr><td><b>5</b></td><td><a href="/players/mayswi01">Willie Mays</a></td><td>660</td></tr>
+	</table>
+</div>
+<div class="col4">
+	<p>Learn more about the pitchers with the most all-time strikeouts:</p>
+	<table class="col1" border='1px solid'>
+		<tr><td class="header">Rank</td><td class="header">Player name</td><td>SO</td></tr>
+		<tr><td><b>1</b></td><td><a href="/players/ryanno01">Nolan Ryan</a></td><td>5,714</td></tr>
+		<tr><td><b>2</b></td><td><a href="/players/johnsra05">Randy Johnson</a></td><td>4,875</td></tr>
+		<tr><td><b>3</b></td><td><a href="/players/clemero02">Roger Clemens</a></td><td>4,672</td></tr>
+		<tr><td><b>4</b></td><td><a href="/players/carltst01">Steve Carlton</a></td><td>4,136</td></tr>
+		<tr><td><b>5</b></td><td><a href="/players/blylebe01">Bert Blyleven</a></td><td>3,701</td></tr>
+	</table>
+</div>
 {% endblock %}
